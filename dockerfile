@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Copy the requirements file into the container
-COPY requirements.txt /app/
+COPY Pipfile Pipfile.lock /app/
 
 # Install the dependencies
 RUN pip install pipenv && pipenv install --deploy --ignore-pipfile
