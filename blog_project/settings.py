@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+xndq61%7%$@2vu%-4dca3=1+shb*!qe(clvgw)m7!26sj^$sb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["blog-app-1-iwgl.onrender.com"]
 
 
 # Application definition
@@ -127,3 +127,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+CSRF_TRUSTED_ORIGINS = ['https://blog-app-1-iwgl.onrender.com']
