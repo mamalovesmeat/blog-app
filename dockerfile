@@ -1,25 +1,25 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10-slim
+FROM python:3.9-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy the requirements file into the container
+# Copy Pipfile and Pipfile.lock
 COPY Pipfile Pipfile.lock /app/
 
-# Install the dependencies
-RUN pip install pipenv && pipenv install --deploy --ignore-pipfile
+# Install pipenv and dependencies
+RUN pip install pipenv
+RUN pipenv --venvs
+RUN source $(pipenv --venvs)/bin/activate && pipenv install --deploy --ignore-pipfile
 
-# Copy the current directory contents into the container at /app
-COPY . /app/
+# Copy the rest of the application code
+COPY. /app/
 
-# Expose the port that the app will run on
+# Expose the port
 EXPOSE 8000
 
-# Run the Django development server
+# Run command to start the application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
