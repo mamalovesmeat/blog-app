@@ -16,7 +16,7 @@ RUN pipenv --venvs
 RUN source $(pipenv --venvs)/bin/activate && pipenv install --deploy --ignore-pipfile
 
 # Copy the rest of the application code
-COPY. /app/
+COPY . /app/
 
 # Expose the port
 EXPOSE 8000
